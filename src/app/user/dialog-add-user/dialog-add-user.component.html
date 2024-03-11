@@ -1,22 +1,23 @@
+@if(loading){<mat-progress-bar mode="indeterminate"></mat-progress-bar>}
 <h2 mat-dialog-title>Add User</h2>
 <mat-dialog-content>
     <h3>User data</h3>
     <div class="name-wrapper ipt-wrapper">
         <mat-form-field >
             <mat-label>First name</mat-label>
-            <input matInput placeholder="Max" [(ngModel)]="user.firstName">
+            <input [disabled]="loading" matInput placeholder="Max" [(ngModel)]="user.firstName">
             <!-- <mat-hint>Please enter a name</mat-hint> -->
           </mat-form-field>
           <mat-form-field >
             <mat-label>Last name</mat-label>
-            <input matInput placeholder="Mustermann" [(ngModel)]="user.lastName">
+            <input [disabled]="loading" matInput placeholder="Mustermann" [(ngModel)]="user.lastName">
             <!-- <mat-hint>Please enter a name</mat-hint> -->
           </mat-form-field>
     </div>
     <div class="birth-date-wrapper ipt-wrapper">
         <mat-form-field >
             <mat-label>Birth Date</mat-label>
-            <input matInput [matDatepicker]="picker" placeholder="3/9/2024" [(ngModel)]="birthDate">
+            <input [disabled]="loading" matInput [matDatepicker]="picker" placeholder="3/9/2024" [(ngModel)]="birthDate">
             <!-- <mat-hint>Please enter a date MM/DD/YYYY</mat-hint> -->
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -26,24 +27,24 @@
     <div class="address-street-wrapper ipt-wrapper">
         <mat-form-field >
             <mat-label>Street</mat-label>
-            <input matInput placeholder="Street" [(ngModel)]="user.streetName">
+            <input [disabled]="loading" matInput placeholder="Street" [(ngModel)]="user.streetName">
             <!-- <mat-hint>Please enter a name</mat-hint> -->
         </mat-form-field>
         <mat-form-field >
             <mat-label>Number</mat-label>
-            <input matInput placeholder="42" [(ngModel)]="user.streetNumber">
+            <input [disabled]="loading" matInput placeholder="42" [(ngModel)]="user.streetNumber">
             <!-- <mat-hint>Please enter a name</mat-hint> -->
         </mat-form-field>
     </div>
     <div class="address-city-wrapper ipt-wrapper">
         <mat-form-field >
             <mat-label>Zip code</mat-label>
-            <input matInput placeholder="01234" [(ngModel)]="user.zipCode">
+            <input [disabled]="loading" matInput placeholder="01234" [(ngModel)]="user.zipCode">
             <!-- <mat-hint>Please enter a name</mat-hint> -->
           </mat-form-field>
           <mat-form-field >
             <mat-label>City name</mat-label>
-            <input matInput placeholder="City" [(ngModel)]="user.city">
+            <input [disabled]="loading" matInput placeholder="City" [(ngModel)]="user.city">
             <!-- <mat-hint>Please enter a name</mat-hint> -->
           </mat-form-field>
     </div>
@@ -51,7 +52,7 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+  <button [disabled]="loading" mat-button (click)="onNoClick()">Cancel</button>
+  <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
 </mat-dialog-actions>
 

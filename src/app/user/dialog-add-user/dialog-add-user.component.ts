@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
@@ -8,6 +8,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { User } from '../../../models/user.class';
 import { FormsModule } from '@angular/forms';
+import { FirebaseService } from '../../shared/services/firebase.service';
+import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -23,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatIconModule,
     MatDatepickerModule,
-    FormsModule
+    FormsModule,
+    MatProgressBarModule
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss'
@@ -33,10 +36,18 @@ export class DialogAddUserComponent {
   user = new User();
   birthDate: Date = {} as Date;
 
+  loading: boolean = false;
+
+  fbService = inject(FirebaseService);
+
   onNoClick(){}
   
-  saveUser(){
+  async saveUser(){
     this.user.birthDate = this.birthDate.getTime();
+    this.loading = true;
     console.log(this.user);
+    await this.fbService.addUser(this.user.toJSON()).then(() => {
+      this.loading = false;      
+    });
   }
 }

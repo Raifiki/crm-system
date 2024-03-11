@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "da-crm-7ac4b": {
+      "hosting": {
+        "crm-system": [
+          "da-crm-7ac4b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "da-crm-7ac4b"
+  }
+}

@@ -96,6 +96,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "crm-system:build:production",
+              "serveTarget": "crm-system:serve:production"
+            },
+            "development": {
+              "buildTarget": "crm-system:build:development",
+              "serveTarget": "crm-system:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
