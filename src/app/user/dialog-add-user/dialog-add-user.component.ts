@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input'; 
@@ -40,6 +40,8 @@ export class DialogAddUserComponent {
 
   fbService = inject(FirebaseService);
 
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>){};
+
   onNoClick(){}
   
   async saveUser(){
@@ -47,7 +49,8 @@ export class DialogAddUserComponent {
     this.loading = true;
     console.log(this.user);
     await this.fbService.addUser(this.user.toJSON()).then(() => {
-      this.loading = false;      
+      this.loading = false;
+      this.dialogRef.close();     
     });
   }
 }

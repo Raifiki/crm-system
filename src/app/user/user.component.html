@@ -1,4 +1,33 @@
-<p>user works!</p>
+<mat-card>
+    <mat-card-content>
+        <table mat-table [dataSource]="getUsers()">
+            <ng-container matColumnDef="firstname">
+                <th mat-header-cell *matHeaderCellDef> First name </th>
+                <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="lastname">
+                <th mat-header-cell *matHeaderCellDef> Last name </th>
+                <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="eMail">
+                <th mat-header-cell *matHeaderCellDef> E-Mail </th>
+                <td mat-cell *matCellDef="let element"> {{element.eMail}} </td>
+            </ng-container>
+            <ng-container matColumnDef="city">
+                <th mat-header-cell *matHeaderCellDef> City </th>
+                <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr 
+                mat-row
+                (click)="openCustomerDetails()" 
+                *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+        </table>
+          
+    </mat-card-content>
+</mat-card>
+  
 
 <button (click)="openAddUserDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add new user" [matTooltipPosition]="'above'">
     <mat-icon>add</mat-icon>

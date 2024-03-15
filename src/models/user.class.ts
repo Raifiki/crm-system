@@ -6,15 +6,17 @@ export class User {
     streetNumber: number;
     zipCode: number;
     city: string;
+    eMail: string;
 
     constructor(obj?: any){
-        this.firstName = obj? obj.firstName : '';
-        this.lastName = obj? obj.lastName : '';
-        this.birthDate = obj? obj.birthDate : '';
-        this.streetName = obj? obj.streetName : '';
-        this.streetNumber = obj? obj.streetNumber : '';
-        this.zipCode = obj? obj.zipCode : '';
-        this.city = obj? obj.city : '';
+        this.firstName = obj?.firstName || '';
+        this.lastName = obj?.lastName || '';
+        this.birthDate = obj?.birthDate || '';
+        this.streetName = obj?.streetName || '';
+        this.streetNumber = obj?.streetNumber || '';
+        this.zipCode = obj?.zipCode || '';
+        this.city = obj?.city || '';
+        this.eMail = obj?.eMail || '';
     }
 
     toJSON(){
@@ -26,6 +28,7 @@ export class User {
             streetNumber: this.streetNumber,
             zipCode: this.zipCode,
             city: this.city,
+            eMail: this.eMail,
         }
     }
 }
