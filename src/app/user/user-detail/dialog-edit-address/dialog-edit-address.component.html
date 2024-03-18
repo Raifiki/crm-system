@@ -1,0 +1,33 @@
+@if(loading){<mat-progress-bar mode="indeterminate"></mat-progress-bar>}
+<h2 mat-dialog-title>Edit address</h2>
+<mat-dialog-content>
+  <h3>Address</h3>
+  <div class="address-street-wrapper ipt-wrapper">
+    <mat-form-field>
+      <mat-label>Street</mat-label>
+      <input [disabled]="loading" matInput placeholder="Street" [(ngModel)]="user.streetName">
+      <!-- <mat-hint>Please enter a name</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Number</mat-label>
+      <input [disabled]="loading" matInput placeholder="42" [(ngModel)]="user.streetNumber">
+      <!-- <mat-hint>Please enter a name</mat-hint> -->
+    </mat-form-field>
+  </div>
+  <div class="address-city-wrapper ipt-wrapper">
+    <mat-form-field>
+      <mat-label>Zip code</mat-label>
+      <input [disabled]="loading" matInput placeholder="01234" [(ngModel)]="user.zipCode" >
+      <!-- <mat-hint>Please enter a name</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>City name</mat-label>
+      <input [disabled]="loading" matInput placeholder="City" [(ngModel)]="user.city">
+      <!-- <mat-hint>Please enter a name</mat-hint> -->
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button [disabled]="loading" mat-button (click)="onNoClick()">Cancel</button>
+  <button [disabled]="loading" mat-button (click)="saveAddress()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

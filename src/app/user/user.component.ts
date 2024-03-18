@@ -9,6 +9,7 @@ import { User } from '../../models/user.class';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table'; 
 import { FirebaseService } from '../shared/services/firebase.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -19,7 +20,8 @@ import { FirebaseService } from '../shared/services/firebase.service';
     MatTooltipModule,
     MatDialogModule,
     MatCardModule,
-    MatTableModule],
+    MatTableModule,
+    RouterLink],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
@@ -32,7 +34,7 @@ export class UserComponent {
 
   fbservice = inject(FirebaseService);
 
-  displayedColumns: string[] = ['firstname','lastname', 'eMail', 'city'];
+  displayedColumns: string[] = ['firstname', 'eMail', 'city'];
   
   constructor(public dialog: MatDialog){};
 
@@ -44,8 +46,8 @@ export class UserComponent {
     return this.fbservice.users;
   }
 
-  openCustomerDetails(){
-    console.log('Hallo');
+  openCustomerDetails(row:any){
+    console.log(row.id);
   }
 
 }

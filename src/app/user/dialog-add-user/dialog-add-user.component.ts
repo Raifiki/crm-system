@@ -42,12 +42,13 @@ export class DialogAddUserComponent {
 
   constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>){};
 
-  onNoClick(){}
+  onNoClick(){
+    this.dialogRef.close(); 
+  }
   
   async saveUser(){
     this.user.birthDate = this.birthDate.getTime();
     this.loading = true;
-    console.log(this.user);
     await this.fbService.addUser(this.user.toJSON()).then(() => {
       this.loading = false;
       this.dialogRef.close();     

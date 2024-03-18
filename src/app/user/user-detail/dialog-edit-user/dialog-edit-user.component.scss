@@ -22,21 +22,3 @@ mat-dialog-content{
         width: 30%;
     }
 }
-
-.address-street-wrapper{
-    > mat-form-field:first-child{
-        width: 70%;
-    }
-    > mat-form-field:last-child{
-        width: 30%;
-    }
-}
-
-.address-city-wrapper{
-    > mat-form-field:first-child{
-        width: 30%;
-    }
-    > mat-form-field:last-child{
-        width: 70%;
-    }
-}

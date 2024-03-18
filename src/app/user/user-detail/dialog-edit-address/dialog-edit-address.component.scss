@@ -14,14 +14,6 @@ mat-dialog-content{
     }
 }
 
-.user-details-wrapper{
-    > mat-form-field:first-child{
-        width: 70%;
-    }
-    > mat-form-field:last-child{
-        width: 30%;
-    }
-}
 
 .address-street-wrapper{
     > mat-form-field:first-child{
