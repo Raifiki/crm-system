@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, addDoc, collection, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, deleteDoc, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { User } from '../../../models/user.class';
 
 
@@ -50,6 +50,16 @@ export class FirebaseService {
     });
   }
 
+  async deleteUser(id: string){
+    await deleteDoc(this.getSingleDocRef(id)).catch((err) => {
+      console.log('Error from FirebaseService deleteUser:',err);
+    }).then(() => {
+        this.unsubUser;
+        console.log('user deleted and unsub with id:', id);
+        this.user = new User();
+    });
+  }
+
   getUsersRef(){
     return collection(this.firestore,'users');
   }
@@ -61,7 +71,5 @@ export class FirebaseService {
   ngonDestroy(){
     this.unsubUsers();
     this.unsubUser();
-    console.log('service unsub');
-    
    }
 }

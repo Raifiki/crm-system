@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -33,9 +34,10 @@ export class UserDetailComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public dialog: MatDialog){}
 
-  async ngOnInit(){
+  ngOnInit(){
     this.userId = this.route.snapshot.paramMap.get('id') || '';
     this.fbService.subUser(this.userId);
   }
@@ -50,5 +52,11 @@ export class UserDetailComponent {
 
   editMenu(){
     this.dialog.open(DialogEditAddressComponent, {});
+  }
+
+  async deleteUser(){
+    await this.fbService.deleteUser(this.userId).then(() => {
+      this.router.navigate(['/user']);
+    });
   }
 }
